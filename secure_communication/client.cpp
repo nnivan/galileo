@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
 
     msg[numbytes] = '\0';
 
-    msg = trivium.encrypt(msg);
+    msg = trivium.encrypt(msg).c_str();
 
     printf("client: received '%s'\n", msg);
 
