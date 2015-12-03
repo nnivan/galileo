@@ -221,7 +221,7 @@ int main(void)
 	fgets(msg, sizeof(msg), stdin);
 	msg_len = strlen(msg);
 	msg[--msg_len] = '\0';
-    strcpy(msg, trivium.encrypt(msg));
+    strcpy(msg, trivium.encrypt(msg).c_str());
 
         if (!fork()) {
             close(sockfd);
