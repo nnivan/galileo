@@ -4,7 +4,7 @@
 
 struct Trivium{
 
-    std::string read_file(std::string file_name){
+    std::string read_file(char file_name[]){
 
         std::ifstream in(file_name);
         std::string return_value;
@@ -103,7 +103,7 @@ struct Trivium{
 int main ()
 {
     Trivium trivium;
-    cout<<trivium.encrypt(trivium.encrypt("Hello, my friend!\n"));
+    std::cout<<trivium.encrypt(trivium.encrypt("Hello, my friend!\n"));
     return 0;
 }
 
