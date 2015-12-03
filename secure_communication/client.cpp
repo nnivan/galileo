@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
 {
     Trivium trivium;
     int sockfd, numbytes;
-    char buf[MAXDATASIZE];
+    char msg[MAXDATASIZE];
     struct addrinfo hints, *servinfo, *p;
     int rv;
     char s[INET6_ADDRSTRLEN];
@@ -174,17 +174,17 @@ int main(int argc, char *argv[])
 
     freeaddrinfo(servinfo);
 
-    if ((numbytes = recv(sockfd, buf, MAXDATASIZE-1, 0)) == -1) {
+    if ((numbytes = recv(sockfd, msg, MAXDATASIZE-1, 0)) == -1) {
         perror("recv");
         exit(1);
     }
 
 
-    buf[numbytes] = '\0';
+    msg[numbytes] = '\0';
 
-    buff = trivium.encrypt(buf);
+    msg = trivium.encrypt(msg);
 
-    printf("client: received '%s'\n", buf);
+    printf("client: received '%s'\n", msg);
 
     close(sockfd);
 
