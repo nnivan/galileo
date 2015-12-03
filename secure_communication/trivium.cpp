@@ -1,14 +1,13 @@
 #include <iostream>
 #include <bitset>
 #include <fstream>
-using namespace std;
 
 struct Trivium{
 
-    string read_file(string file_name){
+    std::string read_file(std::string file_name){
 
-        ifstream in(file_name);
-        string return_value;
+        std::ifstream in(file_name);
+        std::string return_value;
         char c;
 
         if (in.is_open()){
@@ -18,8 +17,8 @@ struct Trivium{
         }
     }
 
-    string keystr;
-    string ivstr;
+    std::string keystr;
+    std::string ivstr;
 
     Trivium(){
         keystr = read_file("trivium_key.txt");
@@ -27,7 +26,7 @@ struct Trivium{
     }
 
 
-    void setup(bitset<288> &s, bitset<3> &t, bitset<80> &KEY, bitset<80> &INITIAL_VALUE){
+    void setup(std::bitset<288> &s, std::bitset<3> &t, std::bitset<80> &KEY, std::bitset<80> &INITIAL_VALUE){
         for (int i = 0; i < 288; ++i){
             s[i] = 0;
         }
@@ -63,13 +62,13 @@ struct Trivium{
         return;
     }
 
-    string encrypt(string plaintext){
-        string ciphertext = plaintext;
+    std::string encrypt(std::string plaintext){
+        std::string ciphertext = plaintext;
 
-        bitset<288> s;
-        bitset<3> t;
-        bitset<80> key(keystr);
-        bitset<80> iv(ivstr);
+        std::bitset<288> s;
+        std::bitset<3> t;
+        std::bitset<80> key(keystr);
+        std::bitset<80> iv(ivstr);
 
 
         setup(s, t, key, iv);
