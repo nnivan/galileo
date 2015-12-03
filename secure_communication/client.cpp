@@ -182,9 +182,11 @@ int main(int argc, char *argv[])
 
     msg[numbytes] = '\0';
 
+    printf("client: received '%s'\n", msg);
+
     strcpy(msg, trivium.encrypt(msg).c_str());
 
-    printf("client: received '%s'\n", msg);
+    printf("client: encrypted '%s'\n", msg);
 
     close(sockfd);
 

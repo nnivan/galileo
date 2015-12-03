@@ -227,7 +227,7 @@ int main(void)
             close(sockfd);
             if (send(new_fd, msg, msg_len, 0) == -1)
                 perror("send");
-	    printf("server: message send\n");
+	    printf("server: message send '%s'\n", msg);
 	    close(new_fd);
             exit(0);
         }
