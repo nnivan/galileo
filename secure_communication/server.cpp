@@ -221,10 +221,11 @@ int main(void)
 	fgets(msg, sizeof(msg), stdin);
 	msg_len = strlen(msg);
 	msg[--msg_len] = '\0';
+	msg = trivium.encrypt(msg);
 
         if (!fork()) {
             close(sockfd);
-            if (send(new_fd, trivium.encrypt(msg), msg_len, 0) == -1)
+            if (send(new_fd, msg, msg_len, 0) == -1)
                 perror("send");
 	    printf("server: message send\n");
 	    close(new_fd);

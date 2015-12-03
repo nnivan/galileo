@@ -179,9 +179,12 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+
     buf[numbytes] = '\0';
 
-    printf("client: received '%s'\n",trivium.encrypt(buf));
+    buff = trivium.encrypt(buf);
+
+    printf("client: received '%s'\n", buf);
 
     close(sockfd);
 
