@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdio>
 #include <memory>
+#include <cstring>
 
 std::string exec(const char* cmd) {
     std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
@@ -15,6 +16,8 @@ std::string exec(const char* cmd) {
     return result;
 }
 
+
+
 int main(){
 	std::cout<<"0 -\n";
 	std::cout<<exec("connmanctl disable wifi");
@@ -24,11 +27,28 @@ int main(){
 	std::cout<<exec("connmanctl scan wifi");
 	std::cout<<"3 -\n";
 
-	std::string wifi_connection = exec("connmanctl services | grep linksys");
-
+	std::string wifi_connection = exec("connmanctl services | grep Galileo");
 	wifi_connection.erase(0,25);
+	
+	if(wifi_connection.empty()){
+		
+		std::cout<<exec("connmanctl tether wifi on Galileo 3edc4rfv");
+		std::cout<<"5.2 -\n";
 
-	std::cout<<wifi_connection;
-	std::cout<<"4 -\n";
+	}else{
+
+		wifi_connection.insert(0, "connmanctl connect ");
+
+		std::cout<<wifi_connection;
+		std::cout<<"4 -\n";
+		
+		char buff[128];
+		strncpy(buff,wifi_connection.c_str(), sizeof(buff));		
+
+		std::cout<<exec(buff);
+		std::cout<<"5.1 -\n";		
+
+	}
+
 	return 0;
 }
