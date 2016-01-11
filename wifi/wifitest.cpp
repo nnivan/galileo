@@ -19,8 +19,10 @@ std::string exec(const char* cmd) {
 
 
 int main(){
-	std::cout<<"0 -\n";
-	std::cout<<exec("connmanctl disable wifi");
+
+	//	std::cout<<"0 -\n";
+	//	std::cout<<exec("connmanctl disable wifi");
+
 	std::cout<<"1 -\n";
 	std::cout<<exec("connmanctl enable wifi");
 	std::cout<<"2 -\n";
