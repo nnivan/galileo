@@ -116,23 +116,18 @@ int main(void)
             continue;
         }
 
-        inet_ntop(their_addr.ss_family,
-            get_in_addr((struct sockaddr *)&their_addr),
-            s, sizeof s);
-	
+        inet_ntop(their_addr.ss_family, get_in_addr((struct sockaddr *)&their_addr), s, sizeof s);
+
         printf("server: got connection from %s\n", s);
-        printf("server: enter a message: ");
-	
-	fgets(msg, sizeof(msg), stdin);
-	msg_len = strlen(msg);
-	msg[--msg_len] = '\0';
+
+        msg_len = 100;
 
         if (!fork()) { // this is the child process
             close(sockfd); // child doesn't need the listener
-            if (send(new_fd, msg, msg_len, 0) == -1)
-                perror("send");
-	    printf("server: message send\n");
-	    close(new_fd);
+            if (recv(new_fd, msg, msg_len, 0) == -1)
+                perror("recv");
+            printf("server: received '%s'\n",msg);
+            close(new_fd);
             exit(0);
         }
         close(new_fd);  // parent doesn't need this
