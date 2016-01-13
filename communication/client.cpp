@@ -16,8 +16,6 @@
 
 #define PORT "3490" // the port client will be connecting to
 
-
-
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
 {

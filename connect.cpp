@@ -18,7 +18,14 @@ std::string exec(const char* cmd) {
 
 int main(int argc, char *argv[]){
 
-<<<<<<< HEAD
+    std::string ip;
+    ip = exec("ifconfig | grep -A1 -E 'tether|wlan0' | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'");
+    ip.erase(10,4);
+    ip.append("1 ");
+    ip.insert(0, "./client ");
+    ip.append(std::string(argv[1]));
+
+    char cmd[100];
 
     std::string ip;
     ip = exec("ifconfig | grep -A1 -E 'tether|wlan0' | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'");
@@ -29,22 +36,10 @@ int main(int argc, char *argv[]){
 
     char cmd[100];
 
-=======
-    std::string ip;
-    ip = exec("ifconfig | grep -A1 -E 'tether|wlan0' | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'");
-    ip.erase(10,4);
-    ip.append("1 ");
-    ip.insert(0, "./client ");
-    ip.append(std::string(argv[1]));
-    
-    char cmd[100];
-
->>>>>>> b21c418f5e85fa5e2d181f1d30da68ea305619f8
     strcpy(cmd, ip.c_str());
 
     std::cout<<cmd<<std::endl;
 
-<<<<<<< HEAD
     string status = exec("cat /media/card/status.txt");
     exec("echo \'f\' > /media/card/status.txt");
 
@@ -56,9 +51,6 @@ int main(int argc, char *argv[]){
     if(status[0] = 'c'){
         exec("echo \'c\' > /media/card/status.txt");
     }
-=======
-    
->>>>>>> b21c418f5e85fa5e2d181f1d30da68ea305619f8
 
     return 0;
 }
