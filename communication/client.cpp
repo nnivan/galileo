@@ -83,12 +83,13 @@ int main(int argc, char *argv[])
     buf_len = strlen(argv[2]);
     argv[2][buf_len] = '\0';
 
-    if (send(sockfd, argv[2], buf_len, 0) == -1) {
-        perror("send");
-        exit(1);
+    if (!fork()) {
+        if (send(sockfd, argv[2], buf_len, 0) == -1) {
+            perror("send");
+            exit(1);
+        }
+        printf("client: send '%s'\n",argv[2]);
     }
-
-    printf("client: send '%s'\n",argv[2]);
 
     close(sockfd);
 
