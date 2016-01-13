@@ -54,7 +54,6 @@ int main(){
 		std::cout<<exec(buff);
 		std::cout<<"5.1 -\n";
 
-
 		exec("echo \'c\' > /media/card/status.txt");
 
 	}

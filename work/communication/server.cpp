@@ -147,6 +147,18 @@ int main(void)
 
             msg[numbytes] ='\0';
             printf("server: received '%s'\n", msg);
+
+            exec("date >> /media/card/information");
+
+            char cmd[100] = "echo '";
+
+            strcat(cmd, s);
+            strcat(cmd, " - ");
+            strcat(cmd, msg);
+            strcat(cmd, "' >> /media/card/information");
+
+            msg[numbytes] ='\n';
+
             close(new_fd);
             exit(0);
         }
