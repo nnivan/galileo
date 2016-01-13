@@ -20,8 +20,8 @@ int main(){
 
     exec("echo \'f\' > /media/card/status.txt");
 
-    //std::cout<<"0 -\n";
-    //std::cout<<exec("connmanctl disable wifi");
+    std::cout<<"0 -\n";
+    std::cout<<exec("connmanctl disable wifi");
 
 	std::cout<<"1 -\n";
 	std::cout<<exec("connmanctl enable wifi");
