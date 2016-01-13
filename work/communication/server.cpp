@@ -148,7 +148,6 @@ int main(void)
             msg[numbytes] ='\0';
             printf("server: received '%s'\n", msg);
 
-            exec("date >> /media/card/information");
 
             char cmd[100] = "echo '";
 
@@ -157,7 +156,11 @@ int main(void)
             strcat(cmd, msg);
             strcat(cmd, "' >> /media/card/information");
 
-            msg[numbytes] ='\n';
+            std::cout<<"date >> /media/card/information\n";
+            std::cout<<cmd<<"\n";
+
+            exec("date >> /media/card/information");
+            exec(cmd);
 
             close(new_fd);
             exit(0);
