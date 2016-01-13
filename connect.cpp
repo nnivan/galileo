@@ -16,11 +16,33 @@ std::string exec(const char* cmd) {
     return result;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]){
 
-    std::string ip = exec("ifconfig | grep -A1 -E 'tether|wlan0' | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'");
 
-    std::cout<<ip<<endl;
+    std::string ip;
+    ip = exec("ifconfig | grep -A1 -E 'tether|wlan0' | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'");
+    ip.erase(10,4);
+    ip.append("1 ");
+    ip.insert(0, "./client ");
+    ip.append(std::string(argv[1]));
+
+    char cmd[100];
+
+    strcpy(cmd, ip.c_str());
+
+    std::cout<<cmd<<std::endl;
+
+    string status = exec("cat /media/card/status.txt");
+    exec("echo \'f\' > /media/card/status.txt");
+
+    exec(cmd);
+
+    if(status[0] = 's'){
+        exec("echo \'s\' > /media/card/status.txt");
+    }
+    if(status[0] = 'c'){
+        exec("echo \'c\' > /media/card/status.txt");
+    }
 
     return 0;
 }
