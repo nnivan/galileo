@@ -28,6 +28,11 @@ void *get_in_addr(struct sockaddr *sa)
 
 int main(int argc, char *argv[])
 {
+
+    std::string status = exec("cat /media/card/status.txt");
+    exec("echo \'f\' > /media/card/status.txt");
+
+
     int sockfd;
     struct addrinfo hints, *servinfo, *p;
     int rv;
@@ -90,6 +95,13 @@ int main(int argc, char *argv[])
     }
 
     close(sockfd);
+
+    if(status[0] = 's'){
+        exec("echo \'s\' > /media/card/status.txt");
+    }
+    if(status[0] = 'c'){
+        exec("echo \'c\' > /media/card/status.txt");
+    }
 
     return 0;
 }

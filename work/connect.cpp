@@ -31,17 +31,7 @@ int main(int argc, char *argv[]){
 
     std::cout<<cmd<<std::endl;
 
-    std::string status = exec("cat /media/card/status.txt");
-    exec("echo \'f\' > /media/card/status.txt");
-
     exec(cmd);
-
-    if(status[0] = 's'){
-        exec("echo \'s\' > /media/card/status.txt");
-    }
-    if(status[0] = 'c'){
-        exec("echo \'c\' > /media/card/status.txt");
-    }
 
     return 0;
 }
