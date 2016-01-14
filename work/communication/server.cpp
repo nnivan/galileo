@@ -154,12 +154,12 @@ int main(void)
             strcat(cmd, s);
             strcat(cmd, " - ");
             strcat(cmd, msg);
-            strcat(cmd, "' >> /media/card/information");
+            strcat(cmd, "' >> information.txt");
 
-            std::cout<<"date >> /media/card/information\n";
+            std::cout<<"date >> information.txt\n";
             std::cout<<cmd<<"\n";
 
-            exec("date >> /media/card/information");
+            exec("date >> information.txt");
             exec(cmd);
 
             close(new_fd);
