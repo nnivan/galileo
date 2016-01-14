@@ -113,10 +113,10 @@ int main(int argc, char *argv[])
 
     close(sockfd);
 
-    if(status[0] = 's'){
+    if(status[0] == 's'){
         exec("echo \'s\' > /media/card/status.txt");
     }
-    if(status[0] = 'c'){
+    if(status[0] == 'c'){
         exec("echo \'c\' > /media/card/status.txt");
     }
 
