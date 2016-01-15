@@ -251,7 +251,7 @@ int main(void)
 
             strcpy(msg, trivium.encrypt(msg).c_str());
 
-            printf("server: decrypted '%s'\n", msg);
+            printf("server: decrypted '%s'\n\n", msg);
 
             /*char cmd[100] = "echo '";
 
