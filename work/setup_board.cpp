@@ -39,7 +39,7 @@ int main(){
 
 		exec("echo \'s\' > /media/card/status.txt");
 
-        system("/home/root/galileo/work/communication/server &");
+        system("/home/root/galileo/work/communication/server > information.txt &");
 
 	}else{
 
